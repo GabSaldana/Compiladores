@@ -1,0 +1,75 @@
+DEMO
+
+/************************************** ESTRELLA 
+for(i=0;i<10;i=i+1){
+   CambiarColor[i*13, i*26, i*51];
+   Avanzar[i*50];
+   Girar[150];
+}
+
+/*************************** estrella de david
+
+
+
+/****************************CARACOL cuadrado
+
+for(i=0;i<20;i=i+1){
+   CambiarColor[i*13, i*26, i*51];
+   Avanzar[i*30];
+   Girar[90];
+}
+
+/*******************************ARBOL
+
+proc tree(){
+ if($1>5){
+  Avanzar[$1];
+  Girar[20];
+CambiarColor[$1*6,$1*22,$1*30];
+  tree($1-5);
+  Girar[320];
+CambiarColor[$1*12,$1*27,$1*6];
+  tree($1-5);
+  Girar[20];
+CambiarColor[$1*15,$1*5,$1*25];
+  Avanzar[(-1)*($1)];
+ }
+}
+
+Girar[90];
+CambiarColor[0,0,0];
+Girar[180];
+Avanzar[200];
+Girar[180];
+CambiarColor[255,255,255];
+tree(60);
+
+/********************************SERIE DE FGURAS
+
+proc circulo(){
+   for(aux=0; aux<360; aux=aux+1){
+      CambiarColor[$1*2,$2*3,$3*4];
+      Avanzar[1];
+      Girar[1];
+   }
+}
+
+
+proc cuadrado(){
+ for(i=0;i<4;i=i+1){
+   CambiarColor[i*2, i*26, i*51];
+   Avanzar[100];
+   Girar[90];
+}
+}
+
+k = 1 ;
+if( k == 0 ){
+circulo(25,65,89);
+}
+if( k == 1){
+cuadrado(12,31,37);
+}
+
+
+

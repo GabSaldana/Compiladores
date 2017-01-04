@@ -1,0 +1,153 @@
+//INSTRUCCIONES BÁSICAS
+
+//**********************CUADRO DE COLORES**********************//
+CambiarColor[255,255,0];
+Avanzar[100];
+Girar[90];
+CambiarColor[255,0,0];
+Avanzar[100];
+Girar[90];
+CambiarColor[0,255,0];
+Avanzar[100];
+Girar[90];
+CambiarColor[0,0,255];
+Avanzar[100];
+Girar[90];
+
+
+//*****************CICLOS-ESTRELLA DE COLORES *******************//
+for(i=0;i<130;i=i+1){
+   CambiarColor[i*13, i*26, i*51];
+   Avanzar[i*5];
+   Girar[150];
+}
+
+//*****************CICLOS-ESPIRAL********************************//
+for(i=0;i<200;i=i+1){
+   CambiarColor[0, i*26, i*51];
+   Avanzar[i*4];
+   Girar[145];
+}
+
+//PROCEDIMIENTOS
+
+//****************************CIRCULO AZUL **********************//
+
+CambiarColor[60,110,153];
+proc cuadro(){
+   for(Auxiliar=0;Auxiliar<4;Auxiliar=Auxiliar+1){
+      Avanzar[100];
+      Girar[90];
+   }
+}
+for(i=0; i< 360; i=i+1){
+cuadro();
+Girar[1];
+}
+
+//***********************PRUEBA CON FUNCIONES******************//
+func potencia () {
+    retorno = 1;
+    for(aux=0; aux<$2; aux=aux+1){
+        retorno = retorno*$1;
+    }
+    return retorno;
+}
+for(i=0; i<24; i=i+1){
+    Avanzar[potencia(i,2)];
+    CambiarColor[
+      5*potencia(i,1),
+      5*potencia(i,2),
+      5*potencia(i,3)
+   ];
+    Girar[90];
+}
+
+//PROCEDIMIENTOS ANIDADOS
+
+//***************************************CARACOL***************************
+proc circulo(){
+   for(aux=0; aux<360; aux=aux+1){
+      CambiarColor[$1*2,$2*3,$3*4];
+      Avanzar[2];
+      Girar[1];
+   }
+}
+proc flor(){
+   for(i=0;i<8;i=i+1){
+      circulo((i+1)*30, (i+1)*32, (i+1)*60);
+      Girar[45];
+   }
+}
+flor();
+
+//********************* TAPETE ********************************//
+
+proc patron() {
+    Girar[-90];
+    for (i = 0; i < 22; i = i + 1) {
+        Girar[-90];
+        CambiarColor[255, 38, 190];
+        Avanzar[110 - (i * 10)];
+        Girar[-90];
+        CambiarColor[35, 255, 75];
+        Avanzar[i * 10];    
+    }
+}
+patron();
+
+//********************************SACATE**************************//
+CambiarColor[0,192,52];
+proc squiral() {
+    Girar[-350];
+    for (i = 0; i < 150; i = i + 0.2) {
+        Avanzar[i * 2];
+        Girar[-91];
+    }
+}
+squiral();
+
+//*************************ARBOL**********************************//
+proc tree(){
+ if($1>5){
+  Avanzar[$1];
+  Girar[20];
+  tree($1-5);
+  Girar[320];
+  tree($1-5);
+  Girar[20];
+  Avanzar[(-1)*($1)];
+ }
+}
+
+Girar[90];
+CambiarColor[255,255,255];
+Girar[180];
+Avanzar[200];
+Girar[180];
+CambiarColor[0,0,0];
+tree(60);
+
+//*******************MISMO ARBOL PERO DE COLORES***********************//
+proc tree(){
+ if($1>5){
+  Avanzar[$1];
+  Girar[20];
+CambiarColor[$1*6,$1*22,$1*30];
+  tree($1-5);
+  Girar[320];
+CambiarColor[$1*12,$1*27,$1*6];
+  tree($1-5);
+  Girar[20];
+CambiarColor[$1*15,$1*5,$1*25];
+  Avanzar[(-1)*($1)];
+ }
+}
+
+Girar[90];
+CambiarColor[0,0,0];
+Girar[180];
+Avanzar[200];
+Girar[180];
+CambiarColor[255,255,255];
+tree(60);

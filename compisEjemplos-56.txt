@@ -1,0 +1,27 @@
+if-----
+
+x entero 0 ;
+if ( x igual 5 )
+printf x ;
+end
+
+
+
+loop----
+Copiar sin los comentarios
+
+
+z entero 10 ;  //Declaras una variable tipo entero  
+loop 10        //Loop de 10 repeticiones
+line 10 z 100 z 0 ; //pintas una linea desde la coordenada (10,z) donde z vale 10 hasta la coordenada(100,z) con el color 0 (rojo)
+z + ;    //incrementas la variable z en uno osea z = z+1
+end     //aqui se cierra el loop
+
+
+
+for---
+
+x entero 0 ;
+for ( x = 10 ; x menor 100 ; x + )
+line 10 z 100 z 0 ;
+end
